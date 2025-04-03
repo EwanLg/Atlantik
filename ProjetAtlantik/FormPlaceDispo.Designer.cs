@@ -154,7 +154,7 @@
             this.Controls.Add(this.cmbPlaceDispoLiaison);
             this.Controls.Add(this.lbxPlaceDispoSecteur);
             this.Name = "FormPlaceDispo";
-            this.Text = "b";
+            this.Text = "FormPlaceDispo";
             this.Load += new System.EventHandler(this.FormPlaceDispo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
