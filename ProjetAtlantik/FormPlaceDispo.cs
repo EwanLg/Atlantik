@@ -28,12 +28,15 @@ namespace ProjetAtlantik
             dtpPlaceDispo.CustomFormat = "MM/dd/yyyy";
             dtpPlaceDispo.Format = DateTimePickerFormat.Custom;
             lvPlaceDispo.View = View.Details;
-            lvPlaceDispo.Columns.Add("No traversée", 100);
-            lvPlaceDispo.Columns.Add("Heure", 100);
-            lvPlaceDispo.Columns.Add("Bateau", 100);
-            lvPlaceDispo.Columns.Add("A passager", 100);
-            lvPlaceDispo.Columns.Add("B véh.inf.2m", 100);
-            lvPlaceDispo.Columns.Add("C véh.sup.2m", 100);
+            lvPlaceDispo.FullRowSelect = true;
+            lvPlaceDispo.GridLines = true;
+            lvPlaceDispo.Columns.Clear();
+            lvPlaceDispo.Columns.Add("No traversée", 100, HorizontalAlignment.Left);
+            lvPlaceDispo.Columns.Add("Heure", 100, HorizontalAlignment.Left);
+            lvPlaceDispo.Columns.Add("Bateau", 150, HorizontalAlignment.Left);
+            lvPlaceDispo.Columns.Add("A passager", 100, HorizontalAlignment.Center);
+            lvPlaceDispo.Columns.Add("B véh.inf.2m", 100, HorizontalAlignment.Center);
+            lvPlaceDispo.Columns.Add("C véh.sup.2m", 100, HorizontalAlignment.Center);
             if (lbxPlaceDispoSecteur.Items.Count > 0)
             {
                 lbxPlaceDispoSecteur.SelectedIndex = 0;
@@ -127,8 +130,7 @@ namespace ProjetAtlantik
         }
         private void ChargerPlaceDispo()
         {
-            string query = @"SELECT notraversee FROM traversee";
-
+            string query = "SELECT NOTRAVERSEE, DATEHEUREDEPART, (SELECT NOM FROM bateau WHERE NOBATEAU = t.NOBATEAU) AS NOM_BATEAU FROM traversee t";
             try
             {
                 lvPlaceDispo.Items.Clear();
@@ -138,36 +140,42 @@ namespace ProjetAtlantik
                     maCnx.Open();
                 }
 
+                List<Categorie> categories = getLesCategories();
+
                 MySqlCommand cmd = new MySqlCommand(query, maCnx);
                 MySqlDataReader jeuEnr = cmd.ExecuteReader();
 
-                if (!jeuEnr.HasRows)
-                {
-                    MessageBox.Show("Aucune réservation trouvée pour ce client.");
-                    return;
-                }
-
                 while (jeuEnr.Read())
                 {
-                    var tabItem = new string[6]
-                    {
-                        jeuEnr.GetInt32("NORESERVATION").ToString(),
-                        jeuEnr.GetString(""),
-                        jeuEnr.GetInt32("g").ToString(),
-                        jeuEnr.GetDateTime("DATEHEUREDEPART").ToString("dd/MM/yyyy HH:mm"),
-                        jeuEnr.GetDateTime("DATEHEUREDEPART").ToString("dd/MM/yyyy HH:mm"),
-                        jeuEnr.GetDateTime("DATEHEUREDEPART").ToString("dd/MM/yyyy HH:mm")
-                    };
+                    int noTraversee = jeuEnr.GetInt32("NOTRAVERSEE");
+                    DateTime dateHeureDepart = jeuEnr.GetDateTime("DATEHEUREDEPART");
+                    string nomBateau = jeuEnr.GetString("NOM_BATEAU");
 
-                    ListViewItem item = new ListViewItem(tabItem);
-                    item.Tag = tabItem[0];
+                    ListViewItem item = new ListViewItem(noTraversee.ToString());
+                    item.SubItems.Add(dateHeureDepart.ToString("HH:mm"));
+                    item.SubItems.Add(nomBateau);
+
+                    int placesRestantesTotales = 0;
+
+                    foreach (var categorie in categories)
+                    {
+                        int quantiteEnregistree = getQuantiteEnregistree(noTraversee, categorie.GetLettreCategorie());
+                        int capaciteMaximale = getCapaciteMaximale(noTraversee, categorie.GetLettreCategorie());
+
+                        int placesRestantes = capaciteMaximale - quantiteEnregistree;
+                        placesRestantesTotales += placesRestantes;
+
+                        item.SubItems.Add(placesRestantes.ToString());
+                    }
+
+                    item.SubItems.Add(placesRestantesTotales.ToString());
                     lvPlaceDispo.Items.Add(item);
                 }
                 jeuEnr.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors du chargements des réservations : " + ex.Message);
+                MessageBox.Show("Erreur lors du chargement des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -177,6 +185,7 @@ namespace ProjetAtlantik
                 }
             }
         }
+
         private List<Categorie> getLesCategories()
         {
             List<Categorie> categories = new List<Categorie>();

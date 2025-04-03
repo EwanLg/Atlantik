@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projet\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|d:\\projet\\projetatlantik\\formplacedispo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formplacedispo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|d:\\projet\\projetatlantik\\categorie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\categorie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|d:\\projet\\projetatlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 352,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Categorie.cs",
+              "DocumentMoniker": "D:\\Projet\\ProjetAtlantik\\Categorie.cs",
+              "RelativeDocumentMoniker": "ProjetAtlantik\\Categorie.cs",
+              "ToolTip": "D:\\Projet\\ProjetAtlantik\\Categorie.cs",
+              "RelativeToolTip": "ProjetAtlantik\\Categorie.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T21:15:34.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormPlaceDispo.cs",
+              "DocumentMoniker": "D:\\Projet\\ProjetAtlantik\\FormPlaceDispo.cs",
+              "RelativeDocumentMoniker": "ProjetAtlantik\\FormPlaceDispo.cs",
+              "ToolTip": "D:\\Projet\\ProjetAtlantik\\FormPlaceDispo.cs",
+              "RelativeToolTip": "ProjetAtlantik\\FormPlaceDispo.cs",
+              "ViewState": "AgIAAJoAAAAAAAAAAADwv78AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T21:03:39.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projet\\ProjetAtlantik\\Program.cs",
+              "RelativeDocumentMoniker": "ProjetAtlantik\\Program.cs",
+              "ToolTip": "D:\\Projet\\ProjetAtlantik\\Program.cs",
+              "RelativeToolTip": "ProjetAtlantik\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T21:04:36.958Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

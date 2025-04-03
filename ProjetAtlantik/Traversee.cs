@@ -9,13 +9,13 @@ namespace ProjetAtlantik
     public class Traversee
     {
         private int noTraversee;
-        private DateTime heureDepart;
+        private DateTime dateHeureDepart;
         private string nomBateau;
 
-        public Traversee(int noTraversee, DateTime heureDepart, string nomBateau)
+        public Traversee(int noTraversee, DateTime dateHeureDepart, string nomBateau)
         {
             this.noTraversee = noTraversee;
-            this.heureDepart = heureDepart;
+            this.dateHeureDepart = dateHeureDepart;
             this.nomBateau = nomBateau;
         }
 
@@ -24,9 +24,9 @@ namespace ProjetAtlantik
             return noTraversee;
         }
 
-        public DateTime GetHeureDepart()
+        public DateTime GetDateHeureDepart()
         {
-            return heureDepart;
+            return dateHeureDepart;
         }
 
         public string GetNomBateau()
@@ -36,7 +36,7 @@ namespace ProjetAtlantik
 
         public override string ToString()
         {
-            return $"{nomBateau} - {heureDepart.ToShortTimeString()}";
+            return $"{nomBateau} - {dateHeureDepart.ToShortTimeString()}";
         }
     }
 }

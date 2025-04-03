@@ -20,52 +20,68 @@ namespace ProjetAtlantik
             this.maCnx = connexion;
         }
 
-        private void ajouterUnBateauToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormAjouterBateau Form = new FormAjouterBateau(maCnx);
-            Form.ShowDialog();
-        }
-
-        private void ajouterUnPortToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormAjouterPort Form = new FormAjouterPort(maCnx);
-            Form.ShowDialog();
-        }
-
-        private void ajouterUnSecteurToolStripMenuItem_Click(object sender, EventArgs e)
+        private void unSecteurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormAjouterSecteur Form = new FormAjouterSecteur(maCnx);
             Form.ShowDialog();
         }
 
-        private void ajouterUneLiaisonToolStripMenuItem_Click(object sender, EventArgs e)
+        private void unPortToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAjouterPort Form = new FormAjouterPort(maCnx);
+            Form.ShowDialog();
+        }
+
+        private void uneLiaisonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLiaison Form = new FormLiaison(maCnx);
             Form.ShowDialog();
         }
 
-        private void ajouterDesTarifsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void lesTarifsPourUneliaisonEtUnePériodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTarifs Form = new FormTarifs(maCnx);
             Form.ShowDialog();
         }
 
-        private void ajouterUneTraverséeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void unBateauToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAjouterBateau Form = new FormAjouterBateau(maCnx);
+            Form.ShowDialog();
+        }
+
+        private void uneTraverséeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTraversée Form = new FormTraversée(maCnx);
             Form.ShowDialog();
         }
 
-        private void détailsDesRéservationsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void unBateauToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormModifierBateau Form = new FormModifierBateau(maCnx);
+            Form.ShowDialog();
+        }
+
+        private void lesParamètresDuSiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pas encore disponible.");
+        }
+
+        private void lesTraverséesPourUneLiaisonEtUneDateDonnéeAvecPlacesRestantesParCatégorieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPlaceDispo Form = new FormPlaceDispo(maCnx);
+            Form.ShowDialog();
+        }
+
+        private void lesDétailsDuneRéservationPourUnClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormDétailsRéservation Form = new FormDétailsRéservation(maCnx);
             Form.ShowDialog();
         }
 
-        private void placeDisponibleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormPlaceDispo Form = new FormPlaceDispo(maCnx);
-            Form.ShowDialog();
+            MessageBox.Show("Pas encore disponible.");
         }
     }
 }

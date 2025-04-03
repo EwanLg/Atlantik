@@ -1,26 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Atlantik\\ProjetAtlantik\\",
+  "WorkspaceRootPath": "D:\\Projet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|c:\\atlantik\\projetatlantik\\projetatlantik\\formaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|d:\\projet\\projetatlantik\\formaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|c:\\atlantik\\projetatlantik\\projetatlantik\\formaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|d:\\projet\\projetatlantik\\formaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formaccueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|c:\\atlantik\\projetatlantik\\projetatlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|c:\\atlantik\\projetatlantik\\projetatlantik\\formaccueil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formaccueil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|C:\\Atlantik\\ProjetAtlantik\\projetatlantik\\formajoutersecteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formajoutersecteur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,75 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 352,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FormAccueil.Designer.cs",
-              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormAccueil.Designer.cs",
-              "RelativeDocumentMoniker": "ProjetAtlantik\\FormAccueil.Designer.cs",
-              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormAccueil.Designer.cs",
-              "RelativeToolTip": "ProjetAtlantik\\FormAccueil.Designer.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAqwEUAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "FormAccueil.cs",
+              "DocumentMoniker": "D:\\Projet\\ProjetAtlantik\\FormAccueil.cs",
+              "RelativeDocumentMoniker": "ProjetAtlantik\\FormAccueil.cs",
+              "ToolTip": "D:\\Projet\\ProjetAtlantik\\FormAccueil.cs",
+              "RelativeToolTip": "ProjetAtlantik\\FormAccueil.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAiwFMAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T09:03:05.155Z",
+              "WhenOpened": "2025-04-03T21:25:56.426Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "FormAccueil.cs [Design]",
-              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormAccueil.cs",
+              "DocumentMoniker": "D:\\Projet\\ProjetAtlantik\\FormAccueil.cs",
               "RelativeDocumentMoniker": "ProjetAtlantik\\FormAccueil.cs",
-              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormAccueil.cs [Design]",
+              "ToolTip": "D:\\Projet\\ProjetAtlantik\\FormAccueil.cs [Design]",
               "RelativeToolTip": "ProjetAtlantik\\FormAccueil.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T09:00:13.577Z",
+              "WhenOpened": "2025-04-03T21:23:45.155Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormAccueil.cs",
-              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormAccueil.cs",
-              "RelativeDocumentMoniker": "ProjetAtlantik\\FormAccueil.cs",
-              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormAccueil.cs",
-              "RelativeToolTip": "ProjetAtlantik\\FormAccueil.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAIA0wBwAAABIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T08:59:22.068Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FormAjouterSecteur.cs",
-              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormAjouterSecteur.cs",
-              "RelativeDocumentMoniker": "ProjetAtlantik\\FormAjouterSecteur.cs",
-              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormAjouterSecteur.cs",
-              "RelativeToolTip": "ProjetAtlantik\\FormAjouterSecteur.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T14:42:30.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\Program.cs",
-              "RelativeDocumentMoniker": "ProjetAtlantik\\Program.cs",
-              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\Program.cs",
-              "RelativeToolTip": "ProjetAtlantik\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T14:50:53.211Z",
-              "EditorCaption": ""
             }
           ]
         }
