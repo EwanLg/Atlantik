@@ -33,10 +33,10 @@ namespace ProjetAtlantik
             lvPlaceDispo.Columns.Clear();
             lvPlaceDispo.Columns.Add("No traversée", 100, HorizontalAlignment.Left);
             lvPlaceDispo.Columns.Add("Heure", 50, HorizontalAlignment.Left);
-            lvPlaceDispo.Columns.Add("Bateau", 150, HorizontalAlignment.Left);
-            lvPlaceDispo.Columns.Add("A passager", 50, HorizontalAlignment.Center);
-            lvPlaceDispo.Columns.Add("B véh.inf.2m", 50, HorizontalAlignment.Center);
-            lvPlaceDispo.Columns.Add("C véh.sup.2m", 50 , HorizontalAlignment.Center);
+            lvPlaceDispo.Columns.Add("Bateau", 100, HorizontalAlignment.Left);
+            lvPlaceDispo.Columns.Add("A passager", 100, HorizontalAlignment.Center);
+            lvPlaceDispo.Columns.Add("B véh.inf.2m", 100, HorizontalAlignment.Center);
+            lvPlaceDispo.Columns.Add("C véh.sup.2m", 100 , HorizontalAlignment.Center);
             if (lbxPlaceDispoSecteur.Items.Count > 0)
             {
                 lbxPlaceDispoSecteur.SelectedIndex = 0;
@@ -131,10 +131,12 @@ namespace ProjetAtlantik
         private void ChargerPlaceDispo(int noLiaison)
         {
             string query = @"
-        SELECT NOTRAVERSEE, DATEHEUREDEPART, 
-               (SELECT NOM FROM bateau WHERE NOBATEAU = t.NOBATEAU) AS NOM_BATEAU 
-        FROM traversee t
-        WHERE t.NOLIAISON = @NOLIAISON";
+SELECT t.NOTRAVERSEE, t.DATEHEUREDEPART, 
+       b.NOM AS NOM_BATEAU
+FROM traversee t
+JOIN bateau b ON t.NOBATEAU = b.NOBATEAU
+WHERE t.NOLIAISON = @NOLIAISON";
+
             try
             {
                 lvPlaceDispo.Items.Clear();
@@ -142,20 +144,55 @@ namespace ProjetAtlantik
                 {
                     maCnx.Open();
                 }
-                MySqlCommand cmd = new MySqlCommand(query, maCnx);
-                cmd.Parameters.AddWithValue("@NOLIAISON", noLiaison);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+
+                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
                 {
-                    ListViewItem item = new ListViewItem(reader.GetInt32("NOTRAVERSEE").ToString());
-                    item.SubItems.Add(reader.GetDateTime("DATEHEUREDEPART").ToString("HH:mm"));
-                    item.SubItems.Add(reader.GetString("NOM_BATEAU"));
-                    item.SubItems.Add("0");
-                    item.SubItems.Add("0");
-                    item.SubItems.Add("0");
-                    lvPlaceDispo.Items.Add(item);
+                    cmd.Parameters.AddWithValue("@NOLIAISON", noLiaison);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        List<(int, string, string)> traversees = new List<(int, string, string)>();
+
+                        while (reader.Read())
+                        {
+                            traversees.Add((
+                                reader.GetInt32("NOTRAVERSEE"),
+                                reader.GetDateTime("DATEHEUREDEPART").ToString("HH:mm"),
+                                reader.GetString("NOM_BATEAU")
+                            ));
+                        }
+
+                        reader.Close();
+
+                        foreach (var (noTraversee, heureDepart, nomBateau) in traversees)
+                        {
+                            // Calcul de la quantité de places disponibles
+                            int quantitePassager = getQuantiteEnregistree(noTraversee, "A");
+                            int quantiteVehInf2m = getQuantiteEnregistree(noTraversee, "B");
+                            int quantiteVehSup2m = getQuantiteEnregistree(noTraversee, "C");
+
+                            // Capacités maximales
+                            int capacitePassager = getCapaciteMaximale(noTraversee, "A");
+                            int capaciteVehInf2m = getCapaciteMaximale(noTraversee, "B");
+                            int capaciteVehSup2m = getCapaciteMaximale(noTraversee, "C");
+
+                            // Calcul des places restantes
+                            int placesRestantesPassager = capacitePassager - quantitePassager;
+                            int placesRestantesVehInf2m = capaciteVehInf2m - quantiteVehInf2m;
+                            int placesRestantesVehSup2m = capaciteVehSup2m - quantiteVehSup2m;
+
+                            // Ajout à la ListView
+                            ListViewItem item = new ListViewItem(noTraversee.ToString());
+                            item.SubItems.Add(heureDepart);
+                            item.SubItems.Add(nomBateau);
+                            item.SubItems.Add(placesRestantesPassager.ToString());
+                            item.SubItems.Add(placesRestantesVehInf2m.ToString());
+                            item.SubItems.Add(placesRestantesVehSup2m.ToString());
+
+                            lvPlaceDispo.Items.Add(item);
+                        }
+                    }
                 }
-                reader.Close();
             }
             catch (Exception ex)
             {
@@ -196,11 +233,13 @@ namespace ProjetAtlantik
         private List<Traversee> getLesTraverseesBateaux(int noLiaison, DateTime dateSelectionnee)
         {
             List<Traversee> traversees = new List<Traversee>();
-            string query = @"SELECT t.NOTRAVERSEE, t.DATEHEUREDEPART, b.NOM AS NOM_BATEAU
-             FROM traversee t
-             JOIN bateau b ON t.NOBATEAU = b.NOBATEAU
-             WHERE t.NOLIAISON = @noLiaison AND DATE(t.DATEHEUREDEPART) = @dateSelectionnee
-             ORDER BY t.DATEHEUREDEPART";
+            string query = @"
+    SELECT t.NOTRAVERSEE, t.DATEHEUREDEPART, b.NOM AS NOM_BATEAU
+    FROM traversee t
+    JOIN bateau b ON t.NOBATEAU = b.NOBATEAU
+    WHERE t.NOLIAISON = @noLiaison AND DATE(t.DATEHEUREDEPART) = @dateSelectionnee
+    ORDER BY t.DATEHEUREDEPART";
+
             try
             {
                 if (maCnx.State == ConnectionState.Closed)
@@ -226,17 +265,20 @@ namespace ProjetAtlantik
             }
             return traversees;
         }
-
-        private int getQuantiteEnregistree(int noTraversee, string lettreCategorie)
+        private int getQuantiteEnregistree(int noReservation, string lettreCategorie)
         {
-            string query = "SELECT IFNULL(SUM(QUANTITERESERVEE), 0) AS Quantite FROM enregistrer WHERE NOTRAVERSEE = @noTraversee AND LETTRECATEGORIE = @lettreCategorie";
+            string query = @"
+    SELECT IFNULL(SUM(QUANTITERESERVEE), 0) AS Quantite
+    FROM enregistrer
+    WHERE NORESERVATION = @noReservation AND LETTRECATEGORIE = @lettreCategorie";
+
             int quantite = 0;
             try
             {
                 if (maCnx.State == ConnectionState.Closed)
                     maCnx.Open();
                 MySqlCommand cmd = new MySqlCommand(query, maCnx);
-                cmd.Parameters.AddWithValue("@noTraversee", noTraversee);
+                cmd.Parameters.AddWithValue("@noReservation", noReservation);
                 cmd.Parameters.AddWithValue("@lettreCategorie", lettreCategorie);
                 quantite = Convert.ToInt32(cmd.ExecuteScalar());
             }
@@ -247,10 +289,14 @@ namespace ProjetAtlantik
             }
             return quantite;
         }
-
         private int getCapaciteMaximale(int noTraversee, string lettreCategorie)
         {
-            string query = "SELECT CAPACITEMAX FROM contenir JOIN traversee USING (NOBATEAU) WHERE NOTRAVERSEE = @noTraversee AND LETTRECATEGORIE = @lettreCategorie";
+            string query = @"
+SELECT CAPACITEMAX
+FROM contenir
+WHERE LETTRECATEGORIE = @lettreCategorie 
+  AND NOBATEAU = (SELECT NOBATEAU FROM traversee WHERE NOTRAVERSEE = @noTraversee)";
+
             int capacite = 0;
             try
             {
@@ -268,7 +314,6 @@ namespace ProjetAtlantik
             }
             return capacite;
         }
-
         private void lbxPlaceDispoSecteur_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbxPlaceDispoSecteur.SelectedItem != null)

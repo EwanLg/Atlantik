@@ -172,7 +172,6 @@
     <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Réservation.cs" />
     <Compile Include="Secteur.cs" />
     <Compile Include="Traversee.cs" />
     <EmbeddedResource Include="FormAccueil.resx">
