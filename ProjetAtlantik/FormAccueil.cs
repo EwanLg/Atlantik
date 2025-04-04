@@ -64,7 +64,8 @@ namespace ProjetAtlantik
 
         private void lesParamètresDuSiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pas encore disponible.");
+            FormParamètres Form = new FormParamètres(maCnx);
+            Form.ShowDialog();
         }
 
         private void lesTraverséesPourUneLiaisonEtUneDateDonnéeAvecPlacesRestantesParCatégorieToolStripMenuItem_Click(object sender, EventArgs e)

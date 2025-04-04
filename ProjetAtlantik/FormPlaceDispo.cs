@@ -32,11 +32,11 @@ namespace ProjetAtlantik
             lvPlaceDispo.GridLines = true;
             lvPlaceDispo.Columns.Clear();
             lvPlaceDispo.Columns.Add("No traversée", 100, HorizontalAlignment.Left);
-            lvPlaceDispo.Columns.Add("Heure", 100, HorizontalAlignment.Left);
+            lvPlaceDispo.Columns.Add("Heure", 50, HorizontalAlignment.Left);
             lvPlaceDispo.Columns.Add("Bateau", 150, HorizontalAlignment.Left);
-            lvPlaceDispo.Columns.Add("A passager", 100, HorizontalAlignment.Center);
-            lvPlaceDispo.Columns.Add("B véh.inf.2m", 100, HorizontalAlignment.Center);
-            lvPlaceDispo.Columns.Add("C véh.sup.2m", 100, HorizontalAlignment.Center);
+            lvPlaceDispo.Columns.Add("A passager", 50, HorizontalAlignment.Center);
+            lvPlaceDispo.Columns.Add("B véh.inf.2m", 50, HorizontalAlignment.Center);
+            lvPlaceDispo.Columns.Add("C véh.sup.2m", 50 , HorizontalAlignment.Center);
             if (lbxPlaceDispoSecteur.Items.Count > 0)
             {
                 lbxPlaceDispoSecteur.SelectedIndex = 0;
@@ -128,50 +128,34 @@ namespace ProjetAtlantik
                 }
             }
         }
-        private void ChargerPlaceDispo()
+        private void ChargerPlaceDispo(int noLiaison)
         {
-            string query = "SELECT NOTRAVERSEE, DATEHEUREDEPART, (SELECT NOM FROM bateau WHERE NOBATEAU = t.NOBATEAU) AS NOM_BATEAU FROM traversee t";
+            string query = @"
+        SELECT NOTRAVERSEE, DATEHEUREDEPART, 
+               (SELECT NOM FROM bateau WHERE NOBATEAU = t.NOBATEAU) AS NOM_BATEAU 
+        FROM traversee t
+        WHERE t.NOLIAISON = @NOLIAISON";
             try
             {
                 lvPlaceDispo.Items.Clear();
-
                 if (maCnx.State == ConnectionState.Closed)
                 {
                     maCnx.Open();
                 }
-
-                List<Categorie> categories = getLesCategories();
-
                 MySqlCommand cmd = new MySqlCommand(query, maCnx);
-                MySqlDataReader jeuEnr = cmd.ExecuteReader();
-
-                while (jeuEnr.Read())
+                cmd.Parameters.AddWithValue("@NOLIAISON", noLiaison);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    int noTraversee = jeuEnr.GetInt32("NOTRAVERSEE");
-                    DateTime dateHeureDepart = jeuEnr.GetDateTime("DATEHEUREDEPART");
-                    string nomBateau = jeuEnr.GetString("NOM_BATEAU");
-
-                    ListViewItem item = new ListViewItem(noTraversee.ToString());
-                    item.SubItems.Add(dateHeureDepart.ToString("HH:mm"));
-                    item.SubItems.Add(nomBateau);
-
-                    int placesRestantesTotales = 0;
-
-                    foreach (var categorie in categories)
-                    {
-                        int quantiteEnregistree = getQuantiteEnregistree(noTraversee, categorie.GetLettreCategorie());
-                        int capaciteMaximale = getCapaciteMaximale(noTraversee, categorie.GetLettreCategorie());
-
-                        int placesRestantes = capaciteMaximale - quantiteEnregistree;
-                        placesRestantesTotales += placesRestantes;
-
-                        item.SubItems.Add(placesRestantes.ToString());
-                    }
-
-                    item.SubItems.Add(placesRestantesTotales.ToString());
+                    ListViewItem item = new ListViewItem(reader.GetInt32("NOTRAVERSEE").ToString());
+                    item.SubItems.Add(reader.GetDateTime("DATEHEUREDEPART").ToString("HH:mm"));
+                    item.SubItems.Add(reader.GetString("NOM_BATEAU"));
+                    item.SubItems.Add("0");
+                    item.SubItems.Add("0");
+                    item.SubItems.Add("0");
                     lvPlaceDispo.Items.Add(item);
                 }
-                jeuEnr.Close();
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -185,7 +169,6 @@ namespace ProjetAtlantik
                 }
             }
         }
-
         private List<Categorie> getLesCategories()
         {
             List<Categorie> categories = new List<Categorie>();
@@ -214,10 +197,10 @@ namespace ProjetAtlantik
         {
             List<Traversee> traversees = new List<Traversee>();
             string query = @"SELECT t.NOTRAVERSEE, t.DATEHEUREDEPART, b.NOM AS NOM_BATEAU
-                     FROM traversee t
-                     JOIN bateau b ON t.NOBATEAU = b.NOBATEAU
-                     WHERE t.NOLIAISON = @noLiaison AND DATE(t.DATEHEUREDEPART) = @dateSelectionnee
-                     ORDER BY t.DATEHEUREDEPART";
+             FROM traversee t
+             JOIN bateau b ON t.NOBATEAU = b.NOBATEAU
+             WHERE t.NOLIAISON = @noLiaison AND DATE(t.DATEHEUREDEPART) = @dateSelectionnee
+             ORDER BY t.DATEHEUREDEPART";
             try
             {
                 if (maCnx.State == ConnectionState.Closed)
@@ -297,7 +280,8 @@ namespace ProjetAtlantik
         }
         private void btnPlaceDispoAfficher_Click(object sender, EventArgs e)
         {
-            ChargerPlaceDispo();
+            Liaison liaison = (Liaison)cmbPlaceDispoLiaison.SelectedItem;
+            ChargerPlaceDispo(liaison.GetNoLiaison());
         }
     }
 }
