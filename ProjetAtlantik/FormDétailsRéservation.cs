@@ -122,9 +122,7 @@ namespace ProjetAtlantik
                     item.Tag = tabItem[0];
                     lvRéservation.Items.Add(item);
                 }
-                string noreservation = jeuEnr.GetInt32("NORESERVATION").ToString();
                 jeuEnr.Close();
-                AfficherDétailsRéservation(noreservation);
             }
             catch (Exception ex)
             {
@@ -140,6 +138,7 @@ namespace ProjetAtlantik
         }
         private void AfficherDétailsRéservation(string noReservation)
         {
+            ClearGroupBox(gbxRéservation);
             string query = @"
                 SELECT 
                     SUM(CASE WHEN t.LIBELLE LIKE 'Adulte%' THEN e.QUANTITERESERVEE ELSE 0 END) AS nbAdultes,
@@ -209,6 +208,15 @@ namespace ProjetAtlantik
             foreach (var label in gbx.Controls.OfType<Label>().ToList())
             {
                 gbx.Controls.Remove(label);
+            }
+        }
+
+        private void lvRéservation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvRéservation.SelectedItems.Count > 0)
+            { 
+                string noReservation = lvRéservation.SelectedItems[0].Tag.ToString();
+                AfficherDétailsRéservation(noReservation);
             }
         }
     }

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Atlantik\\ProjetAtlantik\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|c:\\atlantik\\projetatlantik\\projetatlantik\\formplacedispo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formplacedispo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|c:\\atlantik\\projetatlantik\\projetatlantik\\formd\u00E9tailsr\u00E9servation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formd\u00E9tailsr\u00E9servation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|c:\\atlantik\\projetatlantik\\projetatlantik\\formplacedispo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formplacedispo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|c:\\atlantik\\projetatlantik\\projetatlantik\\formd\u00E9tailsr\u00E9servation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2B936191-B0C0-4548-969B-5A78BBDEFC2A}|ProjetAtlantik\\ProjetAtlantik.csproj|solutionrelative:projetatlantik\\formd\u00E9tailsr\u00E9servation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,26 +27,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormPlaceDispo.cs",
-              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormPlaceDispo.cs",
-              "RelativeDocumentMoniker": "ProjetAtlantik\\FormPlaceDispo.cs",
-              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormPlaceDispo.cs",
-              "RelativeToolTip": "ProjetAtlantik\\FormPlaceDispo.cs",
-              "ViewState": "AQIAAAQBAAAAAAAAAAAiwBsBAAA2AAAA",
+              "Title": "FormD\u00E9tailsR\u00E9servation.cs",
+              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormD\u00E9tailsR\u00E9servation.cs",
+              "RelativeDocumentMoniker": "ProjetAtlantik\\FormD\u00E9tailsR\u00E9servation.cs",
+              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormD\u00E9tailsR\u00E9servation.cs",
+              "RelativeToolTip": "ProjetAtlantik\\FormD\u00E9tailsR\u00E9servation.cs",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAqwI0AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T11:41:20.019Z",
+              "WhenOpened": "2025-04-04T11:49:56.097Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FormPlaceDispo.cs [Design]",
-              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormPlaceDispo.cs",
-              "RelativeDocumentMoniker": "ProjetAtlantik\\FormPlaceDispo.cs",
-              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormPlaceDispo.cs [Design]",
-              "RelativeToolTip": "ProjetAtlantik\\FormPlaceDispo.cs [Design]",
+              "Title": "FormD\u00E9tailsR\u00E9servation.cs [Design]",
+              "DocumentMoniker": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormD\u00E9tailsR\u00E9servation.cs",
+              "RelativeDocumentMoniker": "ProjetAtlantik\\FormD\u00E9tailsR\u00E9servation.cs",
+              "ToolTip": "C:\\Atlantik\\ProjetAtlantik\\ProjetAtlantik\\FormD\u00E9tailsR\u00E9servation.cs [Design]",
+              "RelativeToolTip": "ProjetAtlantik\\FormD\u00E9tailsR\u00E9servation.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T11:41:18.617Z",
+              "WhenOpened": "2025-04-04T11:49:53.455Z",
               "EditorCaption": " [Design]"
             }
           ]

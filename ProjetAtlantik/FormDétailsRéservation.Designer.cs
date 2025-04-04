@@ -73,6 +73,7 @@
             this.lvRéservation.Size = new System.Drawing.Size(478, 251);
             this.lvRéservation.TabIndex = 4;
             this.lvRéservation.UseCompatibleStateImageBehavior = false;
+            this.lvRéservation.SelectedIndexChanged += new System.EventHandler(this.lvRéservation_SelectedIndexChanged);
             // 
             // FormDétailsRéservation
             // 
