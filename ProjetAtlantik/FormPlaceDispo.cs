@@ -145,11 +145,11 @@ WHERE t.NOLIAISON = @NOLIAISON";
                     maCnx.Open();
                 }
 
-                using (MySqlCommand cmd = new MySqlCommand(query, maCnx))
+                MySqlCommand cmd = new MySqlCommand(query, maCnx);
                 {
                     cmd.Parameters.AddWithValue("@NOLIAISON", noLiaison);
 
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    MySqlDataReader reader = cmd.ExecuteReader();
                     {
                         List<(int, string, string)> traversees = new List<(int, string, string)>();
 

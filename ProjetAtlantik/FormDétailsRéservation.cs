@@ -119,7 +119,6 @@ namespace ProjetAtlantik
                     };
 
                     ListViewItem item = new ListViewItem(tabItem);
-                    item.Tag = tabItem[0];
                     lvRéservation.Items.Add(item);
                 }
                 jeuEnr.Close();
@@ -214,8 +213,8 @@ namespace ProjetAtlantik
         private void lvRéservation_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvRéservation.SelectedItems.Count > 0)
-            { 
-                string noReservation = lvRéservation.SelectedItems[0].Tag.ToString();
+            {
+                string noReservation = lvRéservation.SelectedItems[0].SubItems[0].Text;
                 AfficherDétailsRéservation(noReservation);
             }
         }
